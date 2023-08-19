@@ -2,10 +2,10 @@
 #include <stdlib.h>
 
 /**
- * read_line - Simulates terminal input prompt "$ ",
+ * main - Simulates terminal input prompt "$ ",
  * reads user input and prints it to stdout.
  */
-void read_line()
+int main()
 {
 	char *buffer = NULL;
 	size_t characters, num = 0;
@@ -19,9 +19,6 @@ void read_line()
 		printf("Error.");
 
 	free(buffer);
-}
 
-int main()
-{
-	read_line();
+	return (0);
 }
