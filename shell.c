@@ -5,18 +5,31 @@ int main(void)
 	char *buffer = NULL;
 	char **argv;
 	size_t /*characters, */ num = 0;
+	pid_t child_pid = 1;
+        int status;
 
-	printf("$ ");
-	getline(&buffer, &num, stdin);
+	while (1 == 1)
+	{
+		child_pid = fork();
+		if (child_pid == 0)
+		{
+			printf("$ ");
+			getline(&buffer, &num, stdin);
 
-	/*Adjust splitter so it recieves the return value of getline */
-	argv = splitter(buffer);
-	
-	if (execve(argv[0], argv, NULL) == -1)
-		perror("Error");
-	
-	printf("NULL\n");
-           
+			/* Adjust splitter so it recieves the return value of getline */
+			argv = splitter(buffer);
+
+			if (execve(argv[0] , argv, NULL) == -1)
+				perror("Error");
+			
+			return (0);
+		}
+		else
+		{
+			wait(&status);
+		}
+	}
+
 	free(argv);
         free(buffer);
 

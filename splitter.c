@@ -4,7 +4,7 @@ char **splitter(char *str)
 {
 	char **strings;
 	int index, count = 0;
-	char *delimiter = " ", *token, *str_copy, *second_copy;
+	char *delimiter = " \n", *token, *str_copy, *second_copy;
 
 
 	str_copy = malloc(sizeof(char) * (strlen(str) + 1));
