@@ -1,6 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include "main.h" 
 
 char **splitter(char *str)
 {
@@ -44,21 +42,4 @@ char **splitter(char *str)
 	free(str_copy);
 
 	return (strings);
-}
-
-
-int main()
-{
-	char **strings = splitter("2dlm 40 eroi lerk");
-	int i;
-
-	for (i = 0; strings[i] != NULL; i++)
-	{
-		printf("%d, %s\n", i, strings[i]);
-		free(strings[i]);
-	}
-
-	free(strings);
-
-	return (0);
 }
