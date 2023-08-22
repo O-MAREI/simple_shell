@@ -8,14 +8,10 @@
 #include <sys/stat.h>
 #include <stdlib.h>
 #include <string.h>
-#include <errno.h>
 
 char **splitter(char *str, char *delim);
 char *_which(char* file);
 char *_getenv(const char *name);
 void print_dirs();
-int _setenv(const char *name, const char *value, int overwrite);
-int _unsetenv(const char *name);
-int print_environ();
 
 #endif
