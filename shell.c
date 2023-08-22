@@ -2,7 +2,7 @@
 
 int main(void)
 {
-	char *buffer = NULL;
+	char *buffer = NULL, *full_command = NULL;
 	char **argv;
 	size_t /*characters, */ num = 0;
 	pid_t child_pid = 1;
@@ -17,9 +17,10 @@ int main(void)
 			getline(&buffer, &num, stdin);
 
 			/* Adjust splitter so it recieves the return value of getline */
-			argv = splitter(buffer);
+			argv = splitter(buffer, " \n");
+			full_command = _which(argv[0]);
 
-			if (execve(argv[0] , argv, NULL) == -1)
+			if (execve(full_command , argv, NULL) == -1)
 				perror("Error");
 			
 			return (0);

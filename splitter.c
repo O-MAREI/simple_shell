@@ -1,10 +1,10 @@
 #include "main.h" 
 
-char **splitter(char *str)
+char **splitter(char *str, char *delim)
 {
 	char **strings;
 	int index, count = 0;
-	char *delimiter = " \n", *token, *str_copy, *second_copy;
+	char *delimiter = delim, *token, *str_copy, *second_copy;
 
 
 	str_copy = malloc(sizeof(char) * (strlen(str) + 1));
