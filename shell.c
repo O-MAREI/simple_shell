@@ -14,7 +14,7 @@ int main(void)
 
 		if (child_pid == 0)
 		{
-			printf("$ ");
+			_printf("$ ");
 			characters = getline(&buffer, &num, stdin);
 
 			if ((int)characters == -1)
