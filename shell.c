@@ -26,7 +26,7 @@ int main(void)
 			argv = splitter(buffer, " \n");
 			full_command = _which(argv[0]);
 
-			if (execve(full_command , argv, NULL) == -1)
+			if (execve(argv[0] , argv, NULL) == -1)
 				perror("Error");
 
 			free(argv);
