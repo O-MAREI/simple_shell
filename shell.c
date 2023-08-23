@@ -2,7 +2,7 @@
 
 int main(void)
 {
-	char *buffer = NULL, *full_command = NULL;
+	char *buffer = NULL;
 	char **argv;
 	size_t characters, num = 0;
 	pid_t child_pid = 1;
@@ -24,7 +24,6 @@ int main(void)
 			}
 
 			argv = splitter(buffer, " \n");
-			full_command = _which(argv[0]);
 
 			if (execve(argv[0] , argv, NULL) == -1)
 				perror("Error");
