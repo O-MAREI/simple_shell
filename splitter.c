@@ -40,6 +40,7 @@ char **splitter(char *str, char *delim)
 	 strings[index] = NULL;
 
 	free(str_copy);
+	free(second_copy);
 
 	return (strings);
 }

@@ -2,7 +2,7 @@
 
 char *_getenv(char *name)
 {
-	char **environ;
+	extern char **environ;
 	int i = 0, j;
 	char **variables_tokenized;
 
