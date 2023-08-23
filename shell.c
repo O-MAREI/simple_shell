@@ -10,7 +10,7 @@ int main(void)
 	char **argv;
 	size_t characters, num = 0;
 	pid_t child_pid = 1;
-	int status, i;
+	int status, i, return_value = 0;
 
 	while (1 == 1)
 	{
@@ -23,13 +23,14 @@ int main(void)
 
 			characters = getline(&buffer, &num, stdin);
 
-			if ((int)characters == -1)
+			if ((int)characters == -1 || is_exit(buffer) != 0)
 			{
 				free(buffer);
 				exit(2);
 			}
 
 			argv = splitter(buffer, " \n");
+	
 
 			for (i = 0; argv[i] != NULL; i++)
 			{
@@ -37,7 +38,10 @@ int main(void)
 				if (full_command != NULL)
 				{
 					if (execve(full_command, argv, environ) == -1)
+					{
 						_perror("");
+						return_value = 2;
+					}
 				}
 
 				free(argv[i]);
@@ -47,7 +51,7 @@ int main(void)
 			free(argv);
 			free(buffer);
 
-			return (0);
+			return (return_value);
 		}
 		else
 		{
@@ -60,4 +64,38 @@ int main(void)
 			}
 		}
 	}
+}
+
+int is_exit(char *buffer)
+{
+	char *exit = "exit";
+	char **argv;
+	int i, flag = 0;
+
+	argv = splitter(buffer, " \n");
+
+	if (_strcmp(argv[0], exit) == 0)
+	{
+		if (argv[1] == NULL)
+			flag = 1;
+		else
+		{
+			flag = 3;
+		}
+
+
+		for (i = 0; argv[i] != NULL; i++)
+			free(argv[i]);
+		free(argv[i]);
+	}
+	else
+	{
+		flag = 0;
+		for (i=0; argv[i] != NULL; i++)
+			free(argv[i]);
+		free(argv[i]);
+	}
+
+	free(argv);
+	return (flag);
 }
