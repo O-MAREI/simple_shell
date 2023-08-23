@@ -6,7 +6,7 @@ int main(void)
 	char **argv;
 	size_t characters, num = 0;
 	pid_t child_pid = 1;
-        int status;
+        int status, i;
 
 	while (1 == 1)
 	{
@@ -29,8 +29,13 @@ int main(void)
 			if (execve(full_command , argv, NULL) == -1)
 				_perror("Error");
 
+			for (i = 0; argv[i] != NULL; i++)
+				free(argv[i]);
+
+			free(argv[i]);
 			free(argv);
 			free(buffer);
+
 			return (0);
 		}
 		else

@@ -8,7 +8,7 @@ void _printf(char *str)
 	num = write(1, str, len);
 	if (num == -1)
 	{
-		perror("write");
+		_perror("write");
 	}
 }
 

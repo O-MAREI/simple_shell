@@ -4,7 +4,7 @@ char *_which(char* file)
 {
 	char *path, *file_path;
 	char **path_tokenized;
-	int i = 0;
+	int i = 0, j;
 	struct stat buffer;
 
 	path = _getenv("PATH");
@@ -26,7 +26,12 @@ char *_which(char* file)
 			
 			if (stat(file_path, &buffer) == 0)
 			{
+				for (j = 0; path_tokenized[j] != NULL; j++)
+					free(path_tokenized[j]);
+
+				free(path_tokenized[j]);
 				free(path_tokenized);
+
 				return (file_path);
 			}
 			else
@@ -35,6 +40,10 @@ char *_which(char* file)
 			}
 		}
 
+		for (j = 0; path_tokenized[j] != NULL; j++)
+			free(path_tokenized[j]);
+
+		free(path_tokenized[j]);
 		free(path_tokenized);
 	}
 
