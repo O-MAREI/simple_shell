@@ -38,6 +38,6 @@ char *_which(char* file)
 		free(path_tokenized);
 	}
 
-	return(NULL);
+	return(file);
 				
 }
