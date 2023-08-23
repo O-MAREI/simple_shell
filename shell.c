@@ -6,7 +6,7 @@
  */
 int main(void)
 {
-	char *buffer = NULL;/*, *full_command = NULL;*/
+	char *buffer = NULL, *full_command = NULL;
 	char **argv;
 	size_t characters, num = 0;
 	pid_t child_pid = 1;
@@ -18,21 +18,25 @@ int main(void)
 
 		if (child_pid == 0)
 		{
-			_printf("$ ");
+			if (isatty(0) == 1)
+				_printf("$ ");
+
 			characters = getline(&buffer, &num, stdin);
 
 			if ((int)characters == -1)
 			{
-				_printf("Exiting shell...\n");
+				if (isatty(0) == 1)
+					_printf("Exiting shell...\n");
+
 				free(buffer);
 				exit(2);
 			}
 
 			argv = splitter(buffer, " \n");
-			/*full_command = _which(argv[0]);*/
+			full_command = _which(argv[0]);
 
-			if (execve(argv[0], argv, NULL) == -1)
-				_perror("Error: No such file or directory\n");
+			if (execve(full_command, argv, environ) == -1)
+				_perror("");
 
 			for (i = 0; argv[i] != NULL; i++)
 			{
