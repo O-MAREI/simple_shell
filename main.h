@@ -17,5 +17,9 @@ void print_dirs();
 int _setenv(const char *name, const char *value, int overwrite);
 int _unsetenv(const char *name);
 int print_environ();
+int _strlen(char *s);
+char *_strcpy(char *copy, char *original);
+int _strcmp(char *s1, char *s2);
+char *_strcat(char *string, char *addon);
 
 #endif

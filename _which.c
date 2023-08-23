@@ -7,7 +7,7 @@ char *_which(char* file)
 	int i = 0;
 	struct stat buffer;
 
-	path = getenv("PATH");
+	path = _getenv("PATH");
 
 	if (path)
 	{
@@ -18,11 +18,11 @@ char *_which(char* file)
 
 		for (i = 0; path_tokenized != NULL; i++)
 		{
-			file_path = malloc(strlen(file) + strlen(path_tokenized[i]) + 2);
-			strcpy(file_path, path_tokenized[i]);
-			strcat(file_path, "/");
-			strcat(file_path, file);
-			strcat(file_path, "\0");
+			file_path = malloc(_strlen(file) + _strlen(path_tokenized[i]) + 2);
+			_strcpy(file_path, path_tokenized[i]);
+			_strcat(file_path, "/");
+			_strcat(file_path, file);
+			_strcat(file_path, "\0");
 			
 			if (stat(file_path, &buffer) == 0)
 			{
