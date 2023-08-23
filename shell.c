@@ -32,7 +32,12 @@ int main(void)
 			}
 
 			argv = splitter(buffer, " \n");
-	
+
+			if (_strcmp(argv[0], "env") == 0)
+			{
+				print_environ();
+				return (0);
+			}
 
 			for (i = 0; argv[i] != NULL; i++)
 			{
