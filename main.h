@@ -10,6 +10,8 @@
 #include <string.h>
 #include <errno.h>
 
+extern char **environ;
+
 char **splitter(char *str, char *delim);
 char *_which(char* file);
 char *_getenv(char *name);

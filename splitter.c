@@ -1,4 +1,4 @@
-#include "main.h" 
+#include "main.h"
 
 char **splitter(char *str, char *delim)
 {
@@ -37,7 +37,7 @@ char **splitter(char *str, char *delim)
 	}
 
 	/* Null termination */
-        strings[index] = NULL;
+	 strings[index] = NULL;
 
 	free(str_copy);
 
