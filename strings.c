@@ -16,6 +16,14 @@ int _strlen(char *s)
 	return (i);
 }
 
+/**
+ * _strcpy - Copies a string to another string
+ *
+ * @copy: The copied string
+ * @original: The string to copy
+ *
+ * Return: The copied string
+ */
 char *_strcpy(char *copy, char *original)
 {
 	int i;
@@ -28,6 +36,15 @@ char *_strcpy(char *copy, char *original)
 	return (copy);
 }
 
+/**
+ * _strcmp - Compares two strings
+ *
+ * @s1: The first string
+ * @s2: The second string
+ *
+ * Return: 0 if they are equal,
+ * otherwise the difference between the first and second string is returned
+ */
 int _strcmp(char *s1, char *s2)
 {
 	int i;
@@ -44,6 +61,14 @@ int _strcmp(char *s1, char *s2)
 		return (s1[i] - s2[i]);
 }
 
+/**
+ * _strcat - Concatenates two strings
+ *
+ * @string: The first string
+ * @addon: The second string
+ *
+ * Return: The resulting string after concatenation
+ */
 char *_strcat(char *string, char *addon)
 {
 	int i, j;
