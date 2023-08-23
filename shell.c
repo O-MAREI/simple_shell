@@ -10,7 +10,7 @@ int main(void)
 	char **argv;
 	size_t characters, num = 0;
 	pid_t child_pid = 1;
-	int status, i, return_value = 0;
+	int status, i;
 
 	while (1 == 1)
 	{
@@ -26,6 +26,8 @@ int main(void)
 			if ((int)characters == -1 || is_exit(buffer) != 0)
 			{
 				free(buffer);
+				if (is_exit(buffer) == 1)
+					return (0);
 				exit(2);
 			}
 
@@ -40,7 +42,6 @@ int main(void)
 					if (execve(full_command, argv, environ) == -1)
 					{
 						_perror("");
-						return_value = 2;
 					}
 				}
 
@@ -51,16 +52,17 @@ int main(void)
 			free(argv);
 			free(buffer);
 
-			return (return_value);
+			return(0);
 		}
 		else
 		{
 			wait(&status);
+			errno = WIFEXITED(status);
 
 			if (status == 512)
 			{
 				free(buffer);
-				return (0);
+				return (2);
 			}
 		}
 	}
