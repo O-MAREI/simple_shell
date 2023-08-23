@@ -24,6 +24,7 @@ int main(void)
 			if ((int)characters == -1)
 			{
 				_printf("Exiting shell...\n");
+				free(buffer);
 				exit(2);
 			}
 
