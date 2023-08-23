@@ -10,15 +10,14 @@ int main(void)
 
 	while (1 == 1)
 	{
-		if (characters != -1)
-			child_pid = fork();
+		child_pid = fork();
 
 		if (child_pid == 0)
 		{
 			printf("#cisfun$ ");
 			characters = getline(&buffer, &num, stdin);
 
-			if (characters == -1)
+			if ((int)characters == -1)
 			{
 				printf("Exiting shell...\n");
 				exit(2);
