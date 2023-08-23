@@ -25,21 +25,21 @@ int main(void)
 
 			if ((int)characters == -1)
 			{
-				if (isatty(0) == 1)
-					_printf("Exiting shell...\n");
-
 				free(buffer);
 				exit(2);
 			}
 
 			argv = splitter(buffer, " \n");
-			full_command = _which(argv[0]);
-
-			if (execve(full_command, argv, environ) == -1)
-				_perror("");
 
 			for (i = 0; argv[i] != NULL; i++)
 			{
+				full_command = _which(argv[i]);
+				if (full_command != NULL)
+				{
+					if (execve(full_command, argv, environ) == -1)
+						_perror("");
+				}
+
 				free(argv[i]);
 			}
 
