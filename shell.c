@@ -15,7 +15,7 @@ int main(void)
 
 		if (child_pid == 0)
 		{
-			printf("$ ");
+			printf("#cisfun$ ");
 			characters = getline(&buffer, &num, stdin);
 
 			if (characters == -1)
