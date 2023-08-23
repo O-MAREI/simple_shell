@@ -27,7 +27,7 @@ int main(void)
 			{
 				free(buffer);
 				if (is_exit(buffer) == 1)
-					return (0);
+					exit(1);
 				exit(2);
 			}
 
@@ -64,6 +64,8 @@ int main(void)
 				free(buffer);
 				return (2);
 			}
+			else if (status == 139)
+				return (0);
 		}
 	}
 }
