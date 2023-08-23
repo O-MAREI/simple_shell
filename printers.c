@@ -1,4 +1,9 @@
 #include "main.h"
+/**
+ * _printf - Prints a string
+ *
+ * @str: The string to be printed
+ */
 void _printf(char *str)
 {
 	size_t len;
@@ -12,6 +17,11 @@ void _printf(char *str)
 	}
 }
 
+/**
+ * _perror - Prints and error message
+ *
+ * @message: The message to be printed
+ */
 void _perror(char *message)
 {
 	size_t len;
