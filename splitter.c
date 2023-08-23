@@ -22,7 +22,7 @@ char **splitter(char *str, char *delim)
 
 	/* Another copy to avoid modificiation of string literal*/
 	second_copy = malloc(sizeof(char) * (_strlen(str) + 1));
-	strcpy(second_copy, str);
+	_strcpy(second_copy, str);
 
 	/* Dynamic memory allocation for string of strings */
 	strings = malloc(sizeof(char *) * count);

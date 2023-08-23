@@ -19,7 +19,7 @@ int main(void)
 
 			if ((int)characters == -1)
 			{
-				printf("Exiting shell...\n");
+				_printf("Exiting shell...\n");
 				exit(2);
 			}
 
@@ -27,7 +27,7 @@ int main(void)
 			full_command = _which(argv[0]);
 
 			if (execve(full_command , argv, NULL) == -1)
-				perror("Error");
+				_perror("Error");
 
 			free(argv);
 			free(buffer);
