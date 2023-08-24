@@ -1,8 +1,8 @@
 #include "main.h"
 /**
- * main - Entry Point
+ * main - Simple Shell
  *
- * Return: Always 0 (Success)
+ * Return: 0 (Success) | 2 (Failure)
  */
 int main(void)
 {
@@ -57,7 +57,7 @@ int main(void)
 			free(argv);
 			free(buffer);
 
-			return(0);
+			return (0);
 		}
 		else
 		{
@@ -75,6 +75,12 @@ int main(void)
 	}
 }
 
+/**
+ * is_exit - Checks if user input exit command
+ * @buffer: Buffer holding user input
+ *
+ * Return: 0 - No Exit | 1 - Exit | 3 = Args
+ */
 int is_exit(char *buffer)
 {
 	char *exit = "exit";
@@ -100,7 +106,7 @@ int is_exit(char *buffer)
 	else
 	{
 		flag = 0;
-		for (i=0; argv[i] != NULL; i++)
+		for (i = 0; argv[i] != NULL; i++)
 			free(argv[i]);
 		free(argv[i]);
 	}

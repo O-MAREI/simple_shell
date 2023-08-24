@@ -1,5 +1,12 @@
 #include "main.h"
 
+/**
+ * splitter - Splits string into tokens
+ * @str: The string
+ * @delim: The delimiter to use
+ *
+ * Return: Array of tokens
+ */
 char **splitter(char *str, char *delim)
 {
 	char **strings;
@@ -9,7 +16,6 @@ char **splitter(char *str, char *delim)
 
 	str_copy = malloc(sizeof(char) * (_strlen(str) + 1));
 	_strcpy(str_copy, str);
-
 	token = strtok(str_copy, delimiter);
 
 	while (token != NULL)

@@ -1,8 +1,13 @@
 #include "main.h"
 
+/**
+ * _getenv - Gets environment variable
+ * @name: name of environment variable
+ *
+ * Return: The environment variable
+ */
 char *_getenv(char *name)
 {
-	extern char **environ;
 	int i = 0, j;
 	char **variables_tokenized;
 
